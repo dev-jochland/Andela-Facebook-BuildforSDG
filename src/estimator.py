@@ -37,27 +37,27 @@ def estimator(data):
                                           calculate_days_factor(
                                               data.get("timeToElapse"))))
 
-    impact["severeCasesByRequestedTime"] = (math.floor(
-                                            impact.get
-                                            ("infectionByRequestedTime") *
-                                            0.15))
+    # impact["severeCasesByRequestedTime"] = (math.floor(
+    #                                         impact.get
+    #                                         ("infectionByRequestedTime") *
+    #                                         0.15))
 
-    impact["hospitalBedsRequestedTime"] = (calculate_35_percent_bed(
-                                           data.get("totalHospitalBeds")) -
-                                           impact.get(
-                                               "severeCasesByRequestedTime"))
+    # impact["hospitalBedsRequestedTime"] = (calculate_35_percent_bed(
+    #                                        data.get("totalHospitalBeds")) -
+    #                                        impact.get(
+    #                                            "severeCasesByRequestedTime"))
 
-    impact["casesForICUByRequestedTime"] = (math.floor(impact.get
-                                            ("infectionByRequestedTime")
-                                            * 0.05))
+    # impact["casesForICUByRequestedTime"] = (math.floor(impact.get
+    #                                         ("infectionByRequestedTime")
+    #                                         * 0.05))
 
-    impact["casesForVentilatorsByRequestedTime"] = (math.floor(
-                                                    impact.get(
-                                                     "infectionByRequestedTime"
-                                                     ) * 0.02))
+    # impact["casesForVentilatorsByRequestedTime"] = (math.floor(
+    #                                                 impact.get(
+    #                                                  "infectionByRequestedTime"
+    #                                                  ) * 0.02))
 
-    impact["dollarsInFlight"] = (impact.get("infectionByRequestedTime")
-                                 * 0.71 * 5 * data.get("timeToElapse"))
+    # impact["dollarsInFlight"] = (impact.get("infectionByRequestedTime")
+    #                              * 0.71 * 5 * data.get("timeToElapse"))
 
     severeImpact["currentlyInfected"] = data.get("reportedCases") * 50
 
@@ -65,21 +65,21 @@ def estimator(data):
         "currentlyInfected") * calculate_days_factor(
             data.get("timeToElapse"))))
 
-    severeImpact["severeCasesByRequestedTime"] = (math.floor(
-        severeImpact.get("infectionByRequestedTime") * 0.15))
+    # severeImpact["severeCasesByRequestedTime"] = (math.floor(
+    #     severeImpact.get("infectionByRequestedTime") * 0.15))
 
-    severeImpact["hospitalBedsRequestedTime"] = (calculate_35_percent_bed(
-        data.get("totalHospitalBeds")) - severeImpact.get
-        ("severeCasesByRequestedTime"))
+    # severeImpact["hospitalBedsRequestedTime"] = (calculate_35_percent_bed(
+    #     data.get("totalHospitalBeds")) - severeImpact.get
+    #     ("severeCasesByRequestedTime"))
 
-    severeImpact["casesForICUByRequestedTime"] = (math.floor(severeImpact.get(
-        "infectionByRequestedTime") * 0.05))
+    # severeImpact["casesForICUByRequestedTime"] = (math.floor(severeImpact.get(
+    #     "infectionByRequestedTime") * 0.05))
 
-    severeImpact["casesForVentilatorsByRequestedTime"] = (math.floor(
-        severeImpact.get("infectionByRequestedTime") * 0.02))
+    # severeImpact["casesForVentilatorsByRequestedTime"] = (math.floor(
+    #     severeImpact.get("infectionByRequestedTime") * 0.02))
 
-    severeImpact["dollarsInFlight"] = (severeImpact.get(
-        "infectionByRequestedTime") * 0.71 * 5 * data.get("timeToElapse"))
+    # severeImpact["dollarsInFlight"] = (severeImpact.get(
+    #     "infectionByRequestedTime") * 0.71 * 5 * data.get("timeToElapse"))
 
     return output_dictionary
 
