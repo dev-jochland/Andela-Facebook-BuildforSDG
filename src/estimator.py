@@ -3,7 +3,7 @@ import math
 
 def calculate_days_factor(days):
     factor = days // 3
-    return math.pow(2, factor)
+    return int(math.pow(2, factor))
 
 
 def daysConverter(periodType, userInput):
@@ -20,7 +20,7 @@ def daysConverter(periodType, userInput):
 
 def calculate_35_percent_bed(totalNumberOfBeds):
     result = totalNumberOfBeds - totalNumberOfBeds * 0.65
-    return math.floor(result)
+    return int(result)
 
 
 def estimator(data):
@@ -32,16 +32,16 @@ def estimator(data):
 
     impact["currentlyInfected"] = data.get("reportedCases") * 10
 
-    impact["infectionByRequestedTime"] = (math.floor(impact.
+    impact["infectionByRequestedTime"] = (impact.
                                           get("currentlyInfected") *
                                           calculate_days_factor(
-                                              data.get("timeToElapse"))))
+                                              data.get("timeToElapse")))
 
     severeImpact["currentlyInfected"] = data.get("reportedCases") * 50
 
-    severeImpact["infectionByRequestedTime"] = (math.floor(severeImpact.get(
+    severeImpact["infectionByRequestedTime"] = (severeImpact.get(
         "currentlyInfected") * calculate_days_factor(
-            data.get("timeToElapse"))))
+            data.get("timeToElapse")))
 
     return output_dictionary
 
