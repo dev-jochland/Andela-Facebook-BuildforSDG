@@ -1,9 +1,6 @@
-import math
-
-
 def calculate_days_factor(days):
     factor = days // 3
-    return int(math.pow(2, factor))
+    return int(2**factor)
 
 
 def daysConverter(periodType, userInput):
@@ -26,23 +23,17 @@ def calculate_35_percent_bed(totalNumberOfBeds):
 def estimator(data):
     impact = {}
     severeImpact = {}
-    output_dictionary = {"data": data,
-                         "impact": impact,
-                         "severeImpact": severeImpact}
+    estimate = {"data": data,
+                "impact": impact,
+                "severeImpact": severeImpact}
 
     impact["currentlyInfected"] = data.get("reportedCases") * 10
-
-    impact["infectionByRequestedTime"] = (impact.
-                                          get("currentlyInfected") *
-                                          daysConverter(data.get("periodType"), data.get("timeToElapse")))
+    impact["infectionByRequestedTime"] = impact.get("currentlyInfected") * daysConverter(data.get("periodType"), data.get("timeToElapse"))
 
     severeImpact["currentlyInfected"] = data.get("reportedCases") * 50
+    severeImpact["infectionByRequestedTime"] = severeImpact.get("currentlyInfected") * daysConverter(data.get("periodType"), data.get("timeToElapse"))
 
-    severeImpact["infectionByRequestedTime"] = (severeImpact.get(
-        "currentlyInfected") * daysConverter(data.get("periodType"),
-            data.get("timeToElapse")))
-
-    return output_dictionary
+    return estimate
 
 
 def main():
@@ -53,9 +44,9 @@ def main():
              "avgDailyIncomeInUSD": 5,
              "avgDailyIncomePopulation": 0.71
             },
-            "periodType": "days",
-            "timeToElapse": 58,
-            "reportedCases": 674,
+            "periodType": "months",
+            "timeToElapse": 2,
+            "reportedCases": 445,
             "population": 66622705,
             "totalHospitalBeds": 1380614
     }
