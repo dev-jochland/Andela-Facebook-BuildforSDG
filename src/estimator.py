@@ -34,13 +34,12 @@ def estimator(data):
 
     impact["infectionByRequestedTime"] = (impact.
                                           get("currentlyInfected") *
-                                          calculate_days_factor(
-                                              data.get("timeToElapse")))
+                                          daysConverter(data.get("periodType"), data.get("timeToElapse")))
 
     severeImpact["currentlyInfected"] = data.get("reportedCases") * 50
 
     severeImpact["infectionByRequestedTime"] = (severeImpact.get(
-        "currentlyInfected") * calculate_days_factor(
+        "currentlyInfected") * daysConverter(data.get("periodType"),
             data.get("timeToElapse")))
 
     return output_dictionary
