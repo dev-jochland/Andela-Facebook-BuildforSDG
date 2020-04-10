@@ -47,18 +47,18 @@ def estimator(data):
 
 
 def main():
-    period_type = "days"
-    time_to_elapse = 58
-    reported_cases = 674
-    population = 66622705
-    total_hospital_beds = 1380614
-
     data = {
-        "periodType": period_type,
-        "timeToElapse": time_to_elapse,
-        "reportedCases": reported_cases,
-        "population": population,
-        "totalHospitalBeds": total_hospital_beds
+            "region": {
+             "name": "Africa",
+             "avgAge": 19.7,
+             "avgDailyIncomeInUSD": 5,
+             "avgDailyIncomePopulation": 0.71
+            },
+            "periodType": "days",
+            "timeToElapse": 58,
+            "reportedCases": 674,
+            "population": 66622705,
+            "totalHospitalBeds": 1380614
     }
 
     print(estimator(data))
